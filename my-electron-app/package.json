@@ -1,0 +1,19 @@
+{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "description": "Hello electron",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BradleyAcosta/Electron-Project.git"
+  },
+  "author": "Bradley Acosta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BradleyAcosta/Electron-Project/issues"
+  },
+  "homepage": "https://github.com/BradleyAcosta/Electron-Project#readme"
+}
