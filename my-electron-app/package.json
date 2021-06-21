@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/BradleyAcosta/Electron-Project/issues"
   },
-  "homepage": "https://github.com/BradleyAcosta/Electron-Project#readme"
+  "homepage": "https://github.com/BradleyAcosta/Electron-Project#readme",
+  "devDependencies": {
+    "electron": "^13.1.3"
+  }
 }
+
