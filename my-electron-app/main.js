@@ -1,27 +1,19 @@
-const {app, BrowserWindow} = require('electron')
-const path = require('path')
-//function that loads index.html into a new BrowserWindow instance
-function createWindow() {
-    const win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-        }
-    })
+const electron = require('electron');
+const url = require('url');
+const path = require('path');
+//Function that loads index.html into a new BrowserWindow instance
+const {app, BrowserWindow} = electron;
 
-    win.loadFile('index.html')
-}
+let mainWindow;
 
-// call this createWindow() function to open your window.
-app.whenReady().then(() => {
-    createWindow()
-//Do this by attaching your event listener from within your existing whenReady() callback.
-    app.on('activate', function () {
-        if (BrowserWindow.getAllWindows().length === 0) createWindow()
-    })
-})
+//Listen for app to be ready
+app.on('ready', function () {
+    mainWindow = new BrowserWindow({});
+//This code is passing this path file://dirname/index.html
+    mainWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'index.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
+});
 
-app.on('window-all-closed', function () {
-    if (process.platform !== 'darwin') app.quit()
-})
