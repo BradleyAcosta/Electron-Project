@@ -1,11 +1,10 @@
 const {app, BrowserWindow} = require('electron')
 //const path = require('path');
+
+
 //function that loads index.html into a new BrowserWindow instance
-
-
-
 function createWindow() {
-  const  win = new BrowserWindow({
+    const win = new BrowserWindow({
         width: 800,
         height: 600,
     })
