@@ -1,17 +1,17 @@
 const {app, BrowserWindow} = require('electron')
-const path = require('path');
-//Function that loads index.html into a new BrowserWindow instance
-
-let index;
-
-
+//const path = require('path');
 //function that loads index.html into a new BrowserWindow instance
+
+
+
 function createWindow() {
-    const index = new BrowserWindow({
+  const  win = new BrowserWindow({
         width: 800,
         height: 600,
     })
+    win.loadFile('index.html')
 }
+
 // call this createWindow() function to open your window.
 app.whenReady().then(() => {
     createWindow()
