@@ -1,9 +1,9 @@
-const {ipcRenderer} = require('electron')
+const {ipcMain} = require('electron')
+const messageIn = document.getElementById('message');
 
-document.getElementById('mainIPC');
-console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
-
-ipcRenderer.on('asynchronous-reply', (event, arg) => {
-    console.log(arg); // prints "pong"
-});
-ipcRenderer.send('asynchronous-message', 'ping');
+messageIn.addEventListener('click', function (channel, listener) {
+    ipcMain.on('open-message', listener);
+})
+ipcMain.on('open-message', function (event, arg) {
+    console.log(arg);
+})

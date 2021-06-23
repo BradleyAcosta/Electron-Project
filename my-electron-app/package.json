@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
+    "start development": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
