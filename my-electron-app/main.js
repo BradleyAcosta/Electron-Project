@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const {app, ipcMain, BrowserWindow} = require('electron')
 //const path = require('path');
 
 
@@ -24,10 +24,11 @@ app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit()
 })
 
-// Send a message to render
-let win;
-win.webContents.send('asynchronous-message', {'SAVED': 'File Saved'});
-//Receive the message from main
-ipcRenderer.on('asyncronous-message', function (evt, message) {
-    console.log(message); // and it will returns: {'SAVED' : 'file Saved'}
+ipcMain.on('some-name', async (event, someArgument) => {
+    console.log(someArgument);
+    event.reply('asynchronous-reply', 'Hello bradley app');
+});
+ipcMain.on('synchronous-message', (event, arg) => {
+    console.log(arg);// prints "ping"
+    event.returnValue = 'pong';
 });
