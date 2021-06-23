@@ -1,7 +1,10 @@
-const {app, ipcRenderer, BrowserWindow} = require('electron')
+const electron = require('electron');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const renderPath = path.join(app.getAppPath(), 'renderer');
-
+const ipc = electron.ipcRenderer
+const dialog = electron.dialog;
 //function that loads index.html into a new BrowserWindow instance
 function createWindow() {
     const win = new BrowserWindow({
@@ -40,7 +43,8 @@ function createWindow() {
     });
 }
 
-ipcRenderer.on('open-message', function (event) {
-    event.sender.send('Here is the message', 'Bradley Electron app');
+ipc.on('open-message', function (event) {
+    dialog.showMessageBox('Message', 'Render sender')
+    event.sender.send('open-message', 'Bradley Electron app');
 })
 

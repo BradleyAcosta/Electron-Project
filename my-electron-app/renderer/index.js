@@ -1,9 +1,11 @@
-const {ipcMain} = require('electron')
+const electron = require('electron')
+const ipc = electron.ipcMain
+
 const messageIn = document.getElementById('message');
 
-messageIn.addEventListener('click', function (channel, listener) {
-    ipcMain.on('open-message', listener);
+messageIn.addEventListener('click', function (){
+    ipc.send('open-message');
 })
-ipcMain.on('open-message', function (event, arg) {
+ipc.on('open-message', function (event, arg) {
     console.log(arg);
 })
