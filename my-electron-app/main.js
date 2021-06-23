@@ -23,4 +23,11 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit()
 })
-//
+
+// Send a message to render
+let win;
+win.webContents.send('asynchronous-message', {'SAVED': 'File Saved'});
+//Receive the message from main
+ipcRenderer.on('asyncronous-message', function (evt, message) {
+    console.log(message); // and it will returns: {'SAVED' : 'file Saved'}
+});
