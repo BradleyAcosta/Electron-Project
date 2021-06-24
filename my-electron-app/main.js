@@ -7,6 +7,7 @@ const dialog= electron.dialog;
 //function that loads index.html into a new BrowserWindow instance
 function createWindow() {
     const win = new BrowserWindow({
+        backgroundColor: 'aquamarine',
         width: 700,
         height: 600,
         titleBarStyle: "hidden",
