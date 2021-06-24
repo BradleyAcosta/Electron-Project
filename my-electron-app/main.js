@@ -1,7 +1,6 @@
 const electron = require('electron');
-const {BrowserWindow, app} = require('electron');
+const {BrowserWindow, ipcMain , app} = require('electron');
 const path = require('path');
-const ipc = electron.ipcMain;
 const renderPath = path.join(app.getAppPath(), 'renderer');
 const dialog= electron.dialog;
 //function that loads index.html into a new BrowserWindow instance
@@ -69,10 +68,10 @@ app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit()
 });
 
-ipc.on('open-message', function (event) {
+ipcMain.on('open-message', function (event) {
     event.sender.send('open-message', 'From main to renderer');
 });
 
-ipc.on('Msg', (event, data) => {
+ipcMain.on('Msg', (event, data) => {
     console.log(data)
 });

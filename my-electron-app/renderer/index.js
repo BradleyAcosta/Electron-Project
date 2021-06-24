@@ -1,7 +1,6 @@
 const electron = require('electron');
 const ipc = electron.ipcRenderer;
 
-
 const messageIn = document.getElementById('message');
 
 messageIn.addEventListener('click', function () {
