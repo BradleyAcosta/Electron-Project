@@ -44,7 +44,6 @@ app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit()
 });
 
-
 ipc.on('open-message', function (event) {
     dialog.showMessageBox('Message', 'Render sender')
     event.sender.send('open-message', 'Bradley Electron app');
