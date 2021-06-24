@@ -71,7 +71,7 @@ app.on('window-all-closed', function () {
 ipcMain.on('open-message', function (event) {
     event.sender.send('open-message', 'From main to renderer');
 });
-
+//call rendered thread
 ipcMain.on('Msg', (event, data) => {
     console.log(data)
 });

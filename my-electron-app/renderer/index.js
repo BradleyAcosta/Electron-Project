@@ -2,7 +2,7 @@ const electron = require('electron');
 const ipc = electron.ipcRenderer;
 
 const messageIn = document.getElementById('message');
-
+//call main thread message
 messageIn.addEventListener('click', function () {
     ipc.send('open-message');
 })
