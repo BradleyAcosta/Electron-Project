@@ -1,11 +1,13 @@
 const electron = require('electron');
-const ipc = electron.ipcMain;
-const dialog = electron.dialog;
+const ipc = electron.ipcRenderer;
 
 
+const messageIn = document.getElementById('message');
 
-ipc.on('open-message', function (event) {
-    dialog.showMessageBox('Message', 'Render sender')
-    event.sender.send('open-message', 'Bradley Electron app');
-});
+messageIn.addEventListener('click', function () {
+    ipc.send('open-message');
+})
+ipc.on('open-message', function (event, arg) {
+    console.log(arg);
+})
 
