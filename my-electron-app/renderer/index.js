@@ -8,7 +8,6 @@ messageIn.addEventListener('click', function () {
 })
 ipc.send('Msg', 'Message from render to main');
 
-
 ipc.on('open-message', function (event, arg) {
     console.log(arg);
 })
