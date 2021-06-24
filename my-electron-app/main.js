@@ -21,7 +21,7 @@ function createWindow() {
     });
 
     win.webContents.once('did-finish-load', () => {
-        win.webContents.send('user-config-loaded', configurationData.store, subjectData);
+        win.webContents.send('user-config-loaded');
         win.show();
     });
 
