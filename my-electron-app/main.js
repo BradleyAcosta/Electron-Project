@@ -1,41 +1,59 @@
 const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const {BrowserWindow, app} = require('electron');
 const path = require('path');
 const ipc = electron.ipcMain;
 const renderPath = path.join(app.getAppPath(), 'renderer');
 
-
 //function that loads index.html into a new BrowserWindow instance
 function createWindow() {
     const win = new BrowserWindow({
+        width: 700,
+        height: 600,
+        titleBarStyle: "hidden",
+        frame: false,
+        show: false,
+        resizable: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
-            width: 800,
-            height: 600,
+            enableRemoteModule: true
         }
-
-    });
-    const promise = win.loadFile(path.join(renderPath, 'index.html'));
-}
-
-
-process.on('unhandledRejection', err => {
-    console.log(`ERROR: ${err.message}`);
-    console.log('Shutting down the server duo to Unhandled Promise rejection');
-    server.close(() => {
-        process.exit(1)
     });
 
-    if (process.env.NODE_ENV === 'development') {
-        promise.then(() => {
-            win.webContents.openDevTools();
+    win.webContents.once('did-finish-load', () => {
+        win.webContents.send('user-config-loaded', configurationData.store, subjectData);
+        win.show();
+    });
+
+    // Allow the app to fail gracefully and provide some debug info.
+    // profileSelectorWindow.webContents.once('did-fail-load', (e, code, desc) => {
+    win.webContents.once('did-fail-load', (evt, code, desc, url) => {
+        console.error(desc);
+        console.error(url);
+        dialog.showErrorBox('Window failed to load!', desc);
+        app.quit();
+    });
+    process.on('unhandledRejection', err => {
+        console.log(`ERROR: ${err.message}`);
+        console.log('Shutting down the server duo to Unhandled Promise rejection');
+        server.close(() => {
+            process.exit(1)
         });
-    }
-    ;
-});
+    });
 
+
+    let promise = win.loadFile(path.join(renderPath, 'index.html'));
+    promise.then(() => {
+        console.log("ProfileSelectorWindow loaded!");
+
+        if (process.env.NODE_ENV === 'development') {
+            promise.then(() => {
+                win.webContents.openDevTools();
+            });
+            return win;
+        };
+    });
+}
 
 // call this createWindow() function to open your window.
 app.whenReady().then(() => {
@@ -54,7 +72,6 @@ ipc.on('open-message', function (event) {
     event.sender.send('open-message', 'From main to renderer');
 });
 
-
-ipc.on('Msg',(event,data)=> {
-    console.warn(data)
-    });
+ipc.on('Msg', (event, data) => {
+    console.log(data)
+});
