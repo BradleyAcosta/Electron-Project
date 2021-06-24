@@ -3,7 +3,7 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const renderPath = path.join(app.getAppPath(), 'renderer');
-const ipc = electron.ipcRenderer
+const ipc = electron.ipcMain
 const dialog = electron.dialog;
 //function that loads index.html into a new BrowserWindow instance
 function createWindow() {
