@@ -1,8 +1,9 @@
 const electron = require('electron');
-const {BrowserWindow, ipcMain , app} = require('electron');
+const {BrowserWindow, ipcMain, app} = require('electron');
 const path = require('path');
 const renderPath = path.join(app.getAppPath(), 'renderer');
-const dialog= electron.dialog;
+const dialog = electron.dialog;
+
 //function that loads index.html into a new BrowserWindow instance
 function createWindow() {
     const win = new BrowserWindow({
@@ -33,14 +34,6 @@ function createWindow() {
         dialog.showErrorBox('Window failed to load!', desc);
         app.quit();
     });
-    process.on('unhandledRejection', err => {
-        console.log(`ERROR: ${err.message}`);
-        console.log('Shutting down the server duo to Unhandled Promise rejection');
-        server.close(() => {
-            process.exit(1)
-        });
-    });
-
 
     let promise = win.loadFile(path.join(renderPath, 'index.html'));
     promise.then(() => {
@@ -51,7 +44,8 @@ function createWindow() {
                 win.webContents.openDevTools();
             });
             return win;
-        };
+        }
+        ;
     });
 }
 
