@@ -44,8 +44,7 @@ function createWindow() {
                 win.webContents.openDevTools();
             });
             return win;
-        }
-        ;
+        };
     });
 }
 
