@@ -3,7 +3,6 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const ipc = electron.ipcMain;
-const dialog = electron.dialog;
 const renderPath = path.join(app.getAppPath(), 'renderer');
 
 
@@ -52,9 +51,10 @@ app.on('window-all-closed', function () {
 });
 
 ipc.on('open-message', function (event) {
-    dialog.showMessageBox('Message', 'Render sender')
-    event.sender.send('open-message', 'Bradley Electron app');
+    event.sender.send('open-message', 'From main to renderer');
 });
 
 
-
+ipc.on('Msg',(event,data)=> {
+    console.warn(data)
+    });
