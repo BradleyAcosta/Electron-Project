@@ -2,9 +2,10 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
+const ipc = electron.ipcRenderer;
+
 const renderPath = path.join(app.getAppPath(), 'renderer');
-const ipc = electron.ipcMain
-const dialog = electron.dialog;
+
 
 //function that loads index.html into a new BrowserWindow instance
 function createWindow() {
@@ -44,8 +45,16 @@ app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit()
 });
 
-ipc.on('open-message', function (event) {
-    dialog.showMessageBox('Message', 'Render sender')
-    event.sender.send('open-message', 'Bradley Electron app');
-});
+const messageIn = document.getElementById('message');
 
+messageIn.addEventListener('click', function () {
+    ipc.send('open-message');
+})
+const messageIn = document.getElementById('message');
+
+messageIn.addEventListener('click', function () {
+    ipc.send('open-message');
+})
+ipc.on('open-message', function (event, arg) {
+    console.log(arg);
+})
