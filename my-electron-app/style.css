@@ -1,9 +1,10 @@
 body {
     font-family: Verdana, serif;
     background: antiquewhite;
+    width: 85%;
 } * {
     margin: 0;
-    padding: 0;
+    padding: 3%;
 }
 
 header, footer {

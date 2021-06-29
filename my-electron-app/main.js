@@ -7,13 +7,9 @@ const dialog = electron.dialog;
 //function that loads index.html into a new BrowserWindow instance
 function createWindow() {
     const win = new BrowserWindow({
-       // backgroundColor: 'aquamarine',
         width: 700,
         height: 600,
-        titleBarStyle: "hidden",
-        frame: false,
-        show: false,
-        resizable: false,
+        resizable: true,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -39,7 +35,8 @@ function createWindow() {
     promise.then(() => {
         console.log("ProfileSelectorWindow loaded!");
 
-        if (process.env.NODE_ENV === 'development'); {
+        if (process.env.NODE_ENV === 'development') ;
+        {
             promise.then(() => {
                 win.webContents.openDevTools();
             });
@@ -64,7 +61,7 @@ app.on('window-all-closed', function () {
 ipcMain.on('open-message', function (event) {
     event.sender.send('open-message', 'From main to renderer');
 });
-//call rendered thread
+//Call rendered thread
 ipcMain.on('Msg', (event, data) => {
     console.log(data);
 });
