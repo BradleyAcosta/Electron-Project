@@ -1,22 +1,25 @@
-.body{
+body{
     font-family: Verdana, serif;
     background: antiquewhite;
-}
+}*{
+    margin: 0;
+    padding: 0;
+ }
 
-.header,footer {
+header,footer {
     padding: 60px;
     text-align: left;
-    background: aquamarine;
+    background-color: aquamarine;
     color: black;
     font-size: 20px;
     width: 100%;
 }
-.header{
+header{
     height: 10vh;
 }
-.footer{
+footer{
     height: 15vh;
-    border-bottom: 0;
+    bottom: 0;
 }
 /* The Modal (background) */
 .modal {
