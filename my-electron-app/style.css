@@ -1,15 +1,22 @@
 body{
-    background: antiquewhite;
+    font-family: Verdana, serif;
 }
 
-.header {
+header,footer {
     padding: 60px;
     text-align: left;
     background: aquamarine;
-    color: aquamarine;
+    color: black;
     font-size: 20px;
+    width: 100%;
 }
-
+header{
+    height: 10vh;
+}
+footer{
+    height: 15vh;
+    border-bottom: 0;
+}
 /* The Modal (background) */
 .modal {
     display: none;
