@@ -66,8 +66,51 @@ footer {
     cursor: pointer;
 }
 
-@media screen and (max-width: 35px) {
-    body {
-        color: blue;
+/* Normal Smart Watches screen */
+@media screen and (min-width: 150px) {
+
+    h1 span::before {
+        color: grey;
+        content:"Smart watches";
+    }
+}
+/* Normal phone screen */
+@media screen and (min-width: 151px) {
+
+    h1 span::before {
+        color: grey;
+        content:"phone devices";
+    }
+}
+/* Normal tablets screen */
+@media screen and (min-width: 481px) {
+
+    h1 span::before {
+        color: grey;
+        content:"Tablets devices";
+    }
+}
+/* Normal Laptops screen */
+@media screen and (min-width: 769px) {
+
+    h1 span::before {
+        color: grey;
+        content:"Laptop devices";
+    }
+}
+/* Normal Desktop screen */
+@media screen and (min-width: 1025px) {
+
+    h1 span::before {
+        color: grey;
+        content:"Desktop devices";
+    }
+}
+/* Normal Extra large screens(TV, Big Monitors) */
+@media screen and (min-width: 1025px) {
+
+    h1 span::before {
+        color: grey;
+        content:"TV devices";
     }
 }
