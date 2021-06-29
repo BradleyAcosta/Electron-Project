@@ -14,6 +14,7 @@ header, footer {
 
 header {
     background-color: aquamarine;
+    position: center;
     text-align: center;
     height: 10vh;
     font-family: "Times New Roman", serif;
@@ -21,11 +22,14 @@ header {
 }
 
 footer {
+    width: 100%;
+    position: center;
     text-align: right;
     height: 15vh;
     font-family: "Times New Roman", serif;
     font-size: small;
     border-bottom: 0;
+    text-overflow: clip;
 }
 
 /* The Modal (background) */
