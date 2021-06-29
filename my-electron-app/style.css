@@ -29,7 +29,6 @@ footer {
     font-family: "Times New Roman", serif;
     font-size: small;
     border-bottom: 0;
-    text-overflow: clip;
 }
 
 /* The Modal (background) */
