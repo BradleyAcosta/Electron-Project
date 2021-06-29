@@ -65,6 +65,7 @@ footer {
     text-decoration: none;
     cursor: pointer;
 }
+
 /*=========================================================================================================*/
 /*=========================================================================================================*/
 /* Normal Smart Watches screen */
@@ -72,46 +73,51 @@ footer {
 
     h1 span::before {
         color: grey;
-        content:"Smart watches";
+        content: "Smart watches";
     }
 }
+
 /* Normal phone screen */
 @media screen and (min-width: 151px) {
 
     h1 span::before {
         color: grey;
-        content:"phone devices";
+        content: "phone devices";
     }
 }
+
 /* Normal tablets screen */
 @media screen and (min-width: 481px) {
 
     h1 span::before {
         color: grey;
-        content:"Tablets devices";
+        content: "Tablets devices";
     }
 }
+
 /* Normal Laptops screen */
 @media screen and (min-width: 769px) {
 
     h1 span::before {
         color: grey;
-        content:"Laptop devices";
+        content: "Laptop devices";
     }
 }
+
 /* Normal Desktop screen */
 @media screen and (min-width: 1025px) {
 
     h1 span::before {
         color: grey;
-        content:"Desktop devices";
+        content: "Desktop devices";
     }
 }
+
 /* Normal Extra large screens(TV, Big Monitors) */
 @media screen and (min-width: 1201px) {
 
     h1 span::before {
         color: grey;
-        content:"TV devices";
+        content: "TV devices";
     }
 }
