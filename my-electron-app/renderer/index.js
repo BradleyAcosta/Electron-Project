@@ -6,12 +6,13 @@ const messageIn = document.getElementById('message');
 messageIn.addEventListener('click', function () {
     ipc.send('open-message');
 })
+//Send message from render to main
 ipc.send('Msg', 'Message from render to main');
 
 ipc.on('open-message', function (event, arg) {
     console.log(arg);
 });
-//Css variables
+//HTMl button variables
 let modal = document.getElementById('myModal');
 let span = document.getElementsByClassName('close')[0];
 let button = document.getElementById('myBtn');

@@ -60,7 +60,7 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
-
+//Send message from main to render
 ipcMain.on('open-message', function (event) {
     event.sender.send('open-message', 'From main to renderer');
 });
