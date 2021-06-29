@@ -10,11 +10,11 @@ body {
 header, footer {
     color: black;
     width: 100%;
+    position: center;
 }
 
 header {
     background-color: aquamarine;
-    position: center;
     text-align: center;
     height: 10vh;
     font-family: "Times New Roman", serif;
@@ -22,8 +22,6 @@ header {
 }
 
 footer {
-    width: 100%;
-    position: center;
     text-align: right;
     height: 15vh;
     font-family: "Times New Roman", serif;
