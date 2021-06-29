@@ -7,7 +7,7 @@ const dialog = electron.dialog;
 //function that loads index.html into a new BrowserWindow instance
 function createWindow() {
     const win = new BrowserWindow({
-        backgroundColor: 'aquamarine',
+       // backgroundColor: 'aquamarine',
         width: 700,
         height: 600,
         titleBarStyle: "hidden",
@@ -39,13 +39,12 @@ function createWindow() {
     promise.then(() => {
         console.log("ProfileSelectorWindow loaded!");
 
-        if (process.env.NODE_ENV === 'development') {
+        if (process.env.NODE_ENV === 'development'); {
             promise.then(() => {
                 win.webContents.openDevTools();
             });
             return win;
-        }
-        ;
+        };
     });
 }
 
@@ -54,12 +53,12 @@ app.whenReady().then(() => {
     createWindow();
 //Do this by attaching your event listener from within your existing whenReady() callback.
     app.on('activate', function () {
-        if (BrowserWindow.getAllWindows().length === 0) createWindow()
+        if (BrowserWindow.getAllWindows().length === 0) createWindow();
     });
 });
 //Listen for app to be ready
 app.on('window-all-closed', function () {
-    if (process.platform !== 'darwin') app.quit()
+    if (process.platform !== 'darwin') app.quit();
 });
 
 ipcMain.on('open-message', function (event) {
@@ -67,5 +66,5 @@ ipcMain.on('open-message', function (event) {
 });
 //call rendered thread
 ipcMain.on('Msg', (event, data) => {
-    console.log(data)
+    console.log(data);
 });

@@ -11,7 +11,7 @@ ipc.send('Msg', 'Message from render to main');
 ipc.on('open-message', function (event, arg) {
     console.log(arg);
 });
-
+//Css variables
 let modal = document.getElementById('myModal');
 let span = document.getElementsByClassName('close')[0];
 let button = document.getElementById('myBtn');
