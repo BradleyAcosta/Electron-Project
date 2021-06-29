@@ -1,8 +1,9 @@
-body{
+.body{
     font-family: Verdana, serif;
+    background: antiquewhite;
 }
 
-header,footer {
+.header,footer {
     padding: 60px;
     text-align: left;
     background: aquamarine;
@@ -10,10 +11,10 @@ header,footer {
     font-size: 20px;
     width: 100%;
 }
-header{
+.header{
     height: 10vh;
 }
-footer{
+.footer{
     height: 15vh;
     border-bottom: 0;
 }
