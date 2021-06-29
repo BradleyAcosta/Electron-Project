@@ -7,21 +7,24 @@ body {
 }
 
 header, footer {
-    padding: 60px;
-    text-align: left;
-    background-color: aquamarine;
     color: black;
-     font-size: 20px;
     width: 100%;
 }
 
 header {
+    background-color: aquamarine;
+    text-align: center;
     height: 10vh;
+    font-family: "Times New Roman", serif;
+    font-size: small;
 }
 
 footer {
+    text-align: right;
     height: 15vh;
-    bottom: 0;
+    font-family: "Times New Roman", serif;
+    font-size: small;
+    border-bottom: 0;
 }
 
 /* The Modal (background) */
