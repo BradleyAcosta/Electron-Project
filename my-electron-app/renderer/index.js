@@ -36,7 +36,7 @@ document.addEventListener('click', () => {
         .then((data) => {
             return data.json();
         }).then((res) => {
-        console.log(res);
+        console.log(res, 'open-message');
     }).catch(err => {
         // handle any kind of error
         console.log(err);
