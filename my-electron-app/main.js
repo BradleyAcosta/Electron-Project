@@ -21,7 +21,6 @@ function createWindow() {
         win.webContents.send('user-config-loaded');
         win.show();
     });
-
     // Allow the app to fail gracefully and provide some debug info.
     // profileSelectorWindow.webContents.once('did-fail-load', (e, code, desc) => {
     win.webContents.once('did-fail-load', (evt, code, desc, url) => {
@@ -41,7 +40,11 @@ function createWindow() {
                 win.webContents.openDevTools();
             });
             return win;
-        };
+        }
+        ;
+    });
+    win.webContents.on('open-message', () => {
+        console.log('HELLO MAIN');
     });
 }
 
@@ -57,12 +60,9 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
-//Send message from main to render
-ipcMain.on('open-message', function (event) {
-    event.sender.send('open-message', 'From main to renderer');
 
-});
 //Call rendered thread
 ipcMain.on('Msg', (event, data) => {
     console.log(data);
 });
+

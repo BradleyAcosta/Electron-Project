@@ -6,8 +6,6 @@ const messageIn = document.getElementById('message');
 messageIn.addEventListener('click', function () {
     ipc.send('open-message');
 })
-//Send message from render to main
-ipc.send('Msg', 'Message from render to main');
 
 ipc.on('open-message', function (event, arg) {
     console.log(arg);
@@ -31,14 +29,3 @@ window.addEventListener('click', (event) => {
     }
 });
 
-document.addEventListener('click', () => {
-    fetch('')
-        .then((data) => {
-            return data.json();
-        }).then((res) => {
-        console.log(res);
-    }).catch(err => {
-        // handle any kind of error
-        console.log(err);
-    })
-});
