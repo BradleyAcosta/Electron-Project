@@ -31,13 +31,14 @@ window.addEventListener('click', (event) => {
     }
 });
 
-async function postData(url = '', data = {}) {
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-    return response.json();
-}
+document.addEventListener('click', () => {
+    fetch('')
+        .then((data) => {
+            return data.json();
+        }).then((res) => {
+        console.log(res);
+    }).catch(err => {
+        // handle any kind of error
+        console.log(err);
+    })
+});
