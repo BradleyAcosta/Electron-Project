@@ -1,8 +1,10 @@
 const electron = require('electron');
+const axios = require('axios').default;
 const {BrowserWindow, ipcMain, app} = require('electron');
 const path = require('path');
 const renderPath = path.join(app.getAppPath(), 'renderer');
 const dialog = electron.dialog;
+const PORT = 3000;
 
 //function that loads index.html into a new BrowserWindow instance
 function createWindow() {
@@ -58,7 +60,15 @@ app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
 
-ipcMain.on('open-message', (event) => {
+ipcMain.on('open-message', async (event) => {
     console.log('From Renderer to Main');
-    event.sender.send('open-message')
+    event.sender.send('open-message');
+    axios.post
+    (`http://localhost:${PORT}/message`, {
+        name: 'Bradley'
+    }).then((response) => {
+        console.log(response);
+    }).catch((error) => {
+        console.error(error);
+    });
 });
