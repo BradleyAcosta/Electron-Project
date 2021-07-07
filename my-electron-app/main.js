@@ -40,14 +40,10 @@ function createWindow() {
                 win.webContents.openDevTools();
             });
             return win;
-        }
-        ;
+        };
     });
 
 }
-ipcMain.on('open-message', () => {
-    console.log('HELLO MAIN');
-});
 
 // call this createWindow() function to open your window.
 app.whenReady().then(() => {
@@ -62,5 +58,6 @@ app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
 
-
-
+ipcMain.on( 'open-message',(event) => {
+    console.log('From Renderer to Main');
+});

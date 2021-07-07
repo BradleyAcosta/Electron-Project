@@ -7,6 +7,11 @@ messageIn.addEventListener('click', function () {
     ipc.send('open-message');
 });
 
+
+ipc.on('open-message', (event)=> {
+    console.log('event');
+});
+
 //HTMl button variables
 let modal = document.getElementById('myModal');
 let span = document.getElementsByClassName('close')[0];
