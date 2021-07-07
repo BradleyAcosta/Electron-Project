@@ -43,10 +43,11 @@ function createWindow() {
         }
         ;
     });
-    win.webContents.on('open-message', () => {
-        console.log('HELLO MAIN');
-    });
+
 }
+ipcMain.on('open-message', () => {
+    console.log('HELLO MAIN');
+});
 
 // call this createWindow() function to open your window.
 app.whenReady().then(() => {
@@ -61,8 +62,5 @@ app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
 
-//Call rendered thread
-ipcMain.on('Msg', (event, data) => {
-    console.log(data);
-});
+
 

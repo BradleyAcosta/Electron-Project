@@ -5,11 +5,8 @@ const messageIn = document.getElementById('message');
 //call main thread message
 messageIn.addEventListener('click', function () {
     ipc.send('open-message');
-})
-
-ipc.on('open-message', function (event, arg) {
-    console.log(arg);
 });
+
 //HTMl button variables
 let modal = document.getElementById('myModal');
 let span = document.getElementsByClassName('close')[0];
