@@ -35,7 +35,6 @@ function createWindow() {
     let promise = win.loadFile(path.join(renderPath, 'index.html'));
     promise.then(() => {
         console.log("ProfileSelectorWindow loaded!");
-
         if (process.env.NODE_ENV === 'development') ;
         {
             promise.then(() => {
