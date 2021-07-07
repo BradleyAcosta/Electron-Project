@@ -58,6 +58,7 @@ app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
 
-ipcMain.on( 'open-message',(event) => {
+ipcMain.on('open-message', (event) => {
     console.log('From Renderer to Main');
+    event.sender.send('open-message')
 });

@@ -7,9 +7,8 @@ messageIn.addEventListener('click', function () {
     ipc.send('open-message');
 });
 
-
-ipc.on('open-message', (event)=> {
-    console.log('event');
+ipc.on('open-message', (event) => {
+    console.log('Main : Received from Main to renderer');
 });
 
 //HTMl button variables
