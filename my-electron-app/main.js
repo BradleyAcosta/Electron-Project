@@ -34,7 +34,7 @@ function createWindow() {
         app.quit();
     });
 
-    let promise = win.loadFile(path.join(renderPath, 'index.html'));
+    let promise = win.loadFile(path.join(renderPath, 'index.html'))
     promise.then(() => {
         console.log("App is running correclty!");
         if (process.env.NODE_ENV === 'development') {
@@ -71,6 +71,7 @@ ipcMain.on('open-message', async (event) => {
         console.error(error);
     });
 });
-ipcMain.on('/message', (event , message) => {
+ipcMain.on(`http://localhost:${PORT}/message`, (event , message) => {
  console.log(message);
+    event.sender.send(`http://localhost:${PORT}/message`);
 })

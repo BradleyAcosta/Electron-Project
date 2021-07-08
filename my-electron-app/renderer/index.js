@@ -1,5 +1,6 @@
 const electron = require('electron');
 const express = require('express');
+const PORT = 3000;
 const ipc = electron.ipcRenderer;
 
 const messageIn = document.getElementById('message');
@@ -12,7 +13,7 @@ ipc.on('open-message', (event) => {
     console.log('Main : Received from Main to renderer');
 });
 
-ipc.on('message', (event,message) => {
+ipc.on(`http://localhost:${PORT}/message`, (event,message) => {
     document.getElementById("myHeader").innerHTML = message;
 });
 //HTMl button variables
