@@ -12,10 +12,9 @@ ipc.on('open-message', (event) => {
     console.log('Main : Received from Main to renderer');
 });
 
-const getData = document.getElementById('dataRec');
-getData.addEventListener('click', function () {
-    ipc.send(`http://localhost:/message`);
-});
+
+//document.getElementById("myHeader").innerHTML = ;
+
 
 //HTMl button variables
     let modal = document.getElementById('myModal');

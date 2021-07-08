@@ -71,6 +71,6 @@ ipcMain.on('open-message', async (event) => {
     });
 });
 
-ipcMain.on(`http://localhost:${PORT}/message`, (event) => {
-    console.log(event);
-});
+app.getAppPath(`http://localhost:${PORT}/message`, (req, res) => {
+    console.log(res);
+})
