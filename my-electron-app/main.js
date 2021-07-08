@@ -1,6 +1,6 @@
 const electron = require('electron');
 const axios = require('axios').default;
-const express = require('express')
+const express = require('express');
 const {BrowserWindow, ipcMain, app} = require('electron');
 const path = require('path');
 const renderPath = path.join(app.getAppPath(), 'renderer');
@@ -35,13 +35,11 @@ function createWindow() {
 
     let promise = win.loadFile(path.join(renderPath, 'index.html'));
     promise.then(() => {
-        console.log("ProfileSelectorWindow loaded!");
-        if (process.env.NODE_ENV === 'development') ;
-        {
+        console.log("App is running correclty!");
+        if (process.env.NODE_ENV === 'development') {
             promise.then(() => {
                 win.webContents.openDevTools();
             });
-            return win;
         };
     });
 
@@ -71,4 +69,8 @@ ipcMain.on('open-message', async (event) => {
     }).catch((error) => {
         console.error(error);
     });
+});
+
+ipcMain.on(`http://localhost:${PORT}/message`, (event) => {
+    console.log(event);
 });

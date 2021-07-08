@@ -1,4 +1,5 @@
 const electron = require('electron');
+const express = require('express');
 const ipc = electron.ipcRenderer;
 
 const messageIn = document.getElementById('message');
@@ -11,22 +12,28 @@ ipc.on('open-message', (event) => {
     console.log('Main : Received from Main to renderer');
 });
 
+const getData = document.getElementById('dataRec');
+getData.addEventListener('click', function () {
+    ipc.send(`http://localhost:/message`);
+});
+
 //HTMl button variables
-let modal = document.getElementById('myModal');
-let span = document.getElementsByClassName('close')[0];
-let button = document.getElementById('myBtn');
+    let modal = document.getElementById('myModal');
+    let span = document.getElementsByClassName('close')[0];
+    let button = document.getElementById('myBtn');
 
-button.addEventListener('click', () => {
-    modal.style.display = "block";
-});
+    button.addEventListener('click', () => {
+        modal.style.display = "block";
+    });
 
-span.addEventListener('click', () => {
-    modal.style.display = "none";
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target === modal) {
+    span.addEventListener('click', () => {
         modal.style.display = "none";
-    }
-});
-// Hello Bradley.
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+
