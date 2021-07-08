@@ -12,27 +12,26 @@ ipc.on('open-message', (event) => {
     console.log('Main : Received from Main to renderer');
 });
 
-
-//document.getElementById("myHeader").innerHTML = ;
-
-
+ipc.on('message', (event,message) => {
+    document.getElementById("myHeader").innerHTML = message;
+});
 //HTMl button variables
-    let modal = document.getElementById('myModal');
-    let span = document.getElementsByClassName('close')[0];
-    let button = document.getElementById('myBtn');
+let modal = document.getElementById('myModal');
+let span = document.getElementsByClassName('close')[0];
+let button = document.getElementById('myBtn');
 
-    button.addEventListener('click', () => {
-        modal.style.display = "block";
-    });
+button.addEventListener('click', () => {
+    modal.style.display = "block";
+});
 
-    span.addEventListener('click', () => {
+span.addEventListener('click', () => {
+    modal.style.display = "none";
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
         modal.style.display = "none";
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
+    }
+});
 
 

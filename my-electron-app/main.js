@@ -20,6 +20,7 @@ function createWindow() {
         }
     });
 
+
     win.webContents.once('did-finish-load', () => {
         win.webContents.send('user-config-loaded');
         win.show();
@@ -70,7 +71,6 @@ ipcMain.on('open-message', async (event) => {
         console.error(error);
     });
 });
-
-app.getAppPath(`http://localhost:${PORT}/message`, (req, res) => {
-    console.log(res);
+ipcMain.on('/message', (event , message) => {
+ console.log(message);
 })
