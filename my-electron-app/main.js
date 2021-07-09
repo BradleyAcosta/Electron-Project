@@ -59,19 +59,19 @@ app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
 
-ipcMain.on('open-message', async (event) => {
+ipcMain.on('open-message', async (event, args) => {
     console.log('From Renderer to Main');
-    event.sender.send('open-message');
+    const data = Object.assign({}, args);
+    console.log(data);
+    data.source = 'electron main';
+
     axios.post
-    (`http://localhost:${PORT}/message`, {
-        name: 'Bradley'
-    }).then((response) => {
-        console.log(response);
+    (`http://localhost:${PORT}/message`, data).then((response) => {
+        const responseData = Object.assign({}, response.data)
+        console.log(responseData);
+        responseData.source = 'electron main';
+        event.sender.send('open-message', responseData);
     }).catch((error) => {
         console.error(error);
     });
 });
-ipcMain.on(`http://localhost:${PORT}/message`, (event , message) => {
- console.log(message);
-    event.sender.send(`http://localhost:${PORT}/message`);
-})

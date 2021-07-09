@@ -7,7 +7,7 @@ const messageIn = document.getElementById('message');
 //call main thread message
 messageIn.addEventListener('click', function () {
     console.log('From render to main.')
-    const data = { name: 'Bradley', source: 'electron render'};
+    const data = {name: 'Bradley', source: 'electron render'};
     console.log(data);
     ipc.send('open-message', data);
 });
