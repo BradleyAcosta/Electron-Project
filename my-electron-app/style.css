@@ -67,7 +67,14 @@ footer {
     text-decoration: none;
     cursor: pointer;
 }
-
+.Data {
+    color: black;
+    width: 100%;
+    position: center;
+    height: 15vh;
+    font-family: "Times New Roman", serif;
+    border-bottom: 0;
+}
 /*=========================================================================================================*/
 /*=========================================================================================================*/
 /* Normal Smart Watches screen */

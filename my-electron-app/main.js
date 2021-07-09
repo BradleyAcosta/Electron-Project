@@ -59,7 +59,7 @@ app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
 
-ipcMain.on('open-message', async (event, args) => {
+ipcMain.on('open-message',  async (event, args) => {
     console.log('From Renderer to Main');
     const data = Object.assign({}, args);
     console.log(data);
@@ -75,7 +75,4 @@ ipcMain.on('open-message', async (event, args) => {
         console.error(error);
     });
 });
-ipcMain.on(`http://localhost:${PORT}/message`, (event , message) => {
- console.log(message);
-    event.sender.send(`http://localhost:${PORT}/message`);
-})
+

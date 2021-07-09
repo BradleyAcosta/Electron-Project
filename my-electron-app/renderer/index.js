@@ -17,9 +17,10 @@ ipc.on('open-message', (event, args) => {
     console.log(args);
 });
 
-ipc.on(`http://localhost:${PORT}/message`, (event,message) => {
-    document.getElementById("myHeader").innerHTML = message;
+ipc.on('open-message', (event, message) => {
+    let getMessage = document.getElementById("myHeader").innerHTML = message;
 });
+
 //HTMl button variables
 let modal = document.getElementById('myModal');
 let span = document.getElementsByClassName('close')[0];
