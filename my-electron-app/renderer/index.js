@@ -1,5 +1,6 @@
 const electron = require('electron');
 const express = require('express');
+const axios = require('axios').default;
 const PORT = 3000;
 const ipc = electron.ipcRenderer;
 
@@ -10,6 +11,7 @@ messageIn.addEventListener('click', function () {
     const data = {name: 'Bradley', source: 'electron render'};
     console.log(data);
     ipc.send('open-message', data);
+
 });
 
 ipc.on('open-message', (event, args) => {
@@ -18,8 +20,9 @@ ipc.on('open-message', (event, args) => {
 });
 
 ipc.on('open-message', (event, message) => {
-    let getMessage = document.getElementById("myHeader").innerHTML = message;
+    document.getElementById("myHeader").innerHTML = message.source;
 });
+
 //HTMl button variables
 let modal = document.getElementById('myModal');
 let span = document.getElementsByClassName('close')[0];

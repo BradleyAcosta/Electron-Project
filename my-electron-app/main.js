@@ -71,7 +71,9 @@ ipcMain.on('open-message', async (event, args) => {
         console.log(responseData);
         responseData.source = 'electron main';
         event.sender.send('open-message', responseData);
+
     }).catch((error) => {
         console.error(error);
     });
 });
+
