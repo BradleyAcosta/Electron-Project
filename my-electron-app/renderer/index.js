@@ -6,15 +6,19 @@ const ipc = electron.ipcRenderer;
 const messageIn = document.getElementById('message');
 //call main thread message
 messageIn.addEventListener('click', function () {
-    ipc.send('open-message');
+    console.log('From render to main.')
+    const data = { name: 'Bradley', source: 'electron render'};
+    console.log(data);
+    ipc.send('open-message', data);
 });
 
-ipc.on('open-message', (event) => {
+ipc.on('open-message', (event, args) => {
     console.log('Main : Received from Main to renderer');
+    console.log(args);
 });
 
-ipc.on(`http://localhost:${PORT}/message`, (event,message) => {
-    document.getElementById("myHeader").innerHTML = message;
+ipc.on('open-message', (event, message) => {
+    let getMessage = document.getElementById("myHeader").innerHTML = message;
 });
 //HTMl button variables
 let modal = document.getElementById('myModal');
